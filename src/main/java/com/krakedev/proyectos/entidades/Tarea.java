@@ -1,6 +1,7 @@
 package com.krakedev.proyectos.entidades;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +24,7 @@ public class Tarea {
 	@Column(nullable = false, length = 100)
 	private String descripcion;
 	private LocalDate fechaLimite;
+	@ManyToOne
 	private Proyecto proyecto;
 	@ManyToMany
 	@JoinTable(

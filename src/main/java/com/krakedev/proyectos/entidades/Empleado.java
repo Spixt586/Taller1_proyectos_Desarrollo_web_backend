@@ -2,14 +2,19 @@ package com.krakedev.proyectos.entidades;
 
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "empleados")
 public class Empleado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +24,7 @@ public class Empleado {
 	@Column(nullable = false, length = 50)
 	private String cargo;
 	@JsonIgnore
-	@ManyToMany(mappedBy = "proyecto")
+	@ManyToMany(mappedBy = "empleados")
 	private List<Tarea> tareas;
 
 	public Empleado() {
