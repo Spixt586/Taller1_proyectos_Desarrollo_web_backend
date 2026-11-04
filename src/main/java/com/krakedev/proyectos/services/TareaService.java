@@ -53,15 +53,18 @@ public class TareaService {
 	    tarea.setEmpleados(empleados);
 	    return tarearepositorio.save(tarea);
 	}
-
+	
+	@Transactional
 	public List<Tarea> listar(){
 		return tarearepositorio.findAll();
 	}
 	
+	@Transactional
 	public Tarea buscarPorId(int id) {
 		return tarearepositorio.findById(id).orElse(null);
 	}
 	
+	@Transactional
 	public boolean eliminar(int id) {
 		if(tarearepositorio.existsById(id)) {
 			tarearepositorio.deleteById(id);
@@ -71,6 +74,7 @@ public class TareaService {
 		}
 	}
 	
+	@Transactional
 	public Tarea actualizar(int id, Tarea datos) {
 		Tarea tarea = buscarPorId(id);
 		
