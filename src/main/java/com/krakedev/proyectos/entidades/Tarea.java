@@ -41,10 +41,9 @@ public class Tarea {
 		super();
 	}
 	
-	public Tarea(int id, String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
+	public Tarea(String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
 			List<Empleado> empleados) {
 		super();
-		this.id = id;
 		this.descripcion = descripcion;
 		this.fechaLimite = fechaLimite;
 		this.costoEstimado = costoEstimado;

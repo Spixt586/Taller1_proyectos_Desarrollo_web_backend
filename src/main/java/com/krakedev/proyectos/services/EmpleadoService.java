@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.krakedev.proyectos.entidades.Empleado;
+import com.krakedev.proyectos.entidades.Tarea;
 import com.krakedev.proyectos.repositories.EmpleadoRepository;
 
 @Service
@@ -30,12 +31,15 @@ public class EmpleadoService {
 	}
 	
 	public boolean eliminar(int id) {
-		if(repository.existsById(id)) {
-			repository.deleteById(id);
-			return true;
-		}else {
+		Empleado empleado = buscarPorId(id);
+		if(empleado == null) {
 			return false;
 		}
+		for(Tarea tarea : empleado.getTareas()) {
+			tarea.getEmpleados().remove(empleado);
+		}
+		repository.delete(empleado);
+		return true;
 	}
 	
 	public Empleado actualizar(int id, Empleado datos) {

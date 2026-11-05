@@ -31,9 +31,8 @@ public class Empleado {
 		super();
 	}
 
-	public Empleado(int id, String nombre, String cargo, List<Tarea> tareas) {
+	public Empleado(String nombre, String cargo, List<Tarea> tareas) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.cargo = cargo;
 		this.tareas = tareas;
