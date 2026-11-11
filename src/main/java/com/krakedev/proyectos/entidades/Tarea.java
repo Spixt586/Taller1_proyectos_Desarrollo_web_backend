@@ -27,6 +27,8 @@ public class Tarea {
 	private LocalDate fechaLimite;
 	@Column(nullable=false)
 	private double costoEstimado;
+	@Column(nullable = true, length = 30)
+	private String estado;
 	@ManyToOne
 	private Proyecto proyecto;
 	@ManyToMany
@@ -41,12 +43,13 @@ public class Tarea {
 		super();
 	}
 	
-	public Tarea(String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
+	public Tarea(String descripcion, LocalDate fechaLimite, double costoEstimado, String estado, Proyecto proyecto,
 			List<Empleado> empleados) {
 		super();
 		this.descripcion = descripcion;
 		this.fechaLimite = fechaLimite;
 		this.costoEstimado = costoEstimado;
+		this.estado = estado;
 		this.proyecto = proyecto;
 		this.empleados = empleados;
 	}
@@ -90,5 +93,12 @@ public class Tarea {
 	public void setCostoEstimado(double costoEstimado) {
 		this.costoEstimado = costoEstimado;
 	}
-	
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }
