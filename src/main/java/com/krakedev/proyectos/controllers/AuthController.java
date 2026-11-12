@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -67,12 +68,13 @@ public class AuthController {
 			String token = authHeader.substring(7);
 			blacklistService.invalidarToken(token);
 
-			return ResponseEntity.ok(Map.of("mensaje", "Sesión cerrada exitosamente"));
+			return ResponseEntity.ok(Map.of("mensaje", "Sesión cerrada exitosamente. Token invalidao"));
 		}else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token no proporcionado");
 		}
 	}
 	
+	@GetMapping("/verPerfil")
 	public ResponseEntity<?> verPerfil(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
