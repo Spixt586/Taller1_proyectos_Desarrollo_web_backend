@@ -68,7 +68,7 @@ public class AuthController {
 			String token = authHeader.substring(7);
 			blacklistService.invalidarToken(token);
 
-			return ResponseEntity.ok(Map.of("mensaje", "Sesión cerrada exitosamente. Token invalidao"));
+			return ResponseEntity.ok(Map.of("mensaje", "Sesión cerrada exitosamente. Token invalid0"));
 		}else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token no proporcionado");
 		}
